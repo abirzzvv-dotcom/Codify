@@ -1,3 +1,7 @@
+// Environment Configuration
+const API_TOKEN = process.env.VITE_API_TOKEN || 'your_token_here';
+const API_URL = process.env.VITE_API_URL || 'http://localhost:3000';
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -22,7 +26,7 @@ function handleGetStarted() {
     showNotification('Ready to start learning? Explore our features!');
 }
 
-// Contact form handler
+// Contact form handler with API integration
 function handleContact(event) {
     event.preventDefault();
     const form = event.target;
@@ -35,10 +39,44 @@ function handleContact(event) {
         return;
     }
 
-    // Simulate sending (in real app, this would go to a backend)
-    console.log('Contact form submitted:', { email, message });
-    showNotification('Thank you! We\'ll get back to you soon.', 'success');
-    form.reset();
+    // Send to API endpoint
+    const contactData = {
+        email: email,
+        message: message,
+        timestamp: new Date().toISOString()
+    };
+
+    // Show loading state
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Make API call
+    fetch(`${API_URL}/contact`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_TOKEN}`
+        },
+        body: JSON.stringify(contactData)
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to send message');
+        return response.json();
+    })
+    .then(data => {
+        showNotification('Thank you! We\'ll get back to you soon.', 'success');
+        form.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Contact form error:', error);
+        showNotification('Failed to send message. Please try again.', 'error');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
 }
 
 // Notification system
@@ -119,5 +157,6 @@ document.querySelectorAll('.feature-card, .about, .contact').forEach(el => {
     observer.observe(el);
 });
 
-// Log page load
+// Log initialization
 console.log('Codify loaded successfully!');
+console.log('API URL:', API_URL);
