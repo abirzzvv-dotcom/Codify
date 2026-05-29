@@ -7,119 +7,144 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="root" class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 w-full min-h-screen">
+    <div id="root" class="root">
         <!-- Navigation -->
-        <nav class="flex items-center justify-between p-8 sticky top-0 bg-slate-900 bg-opacity-90 backdrop-blur z-50">
-            <div class="flex items-center gap-2">
-                <svg class="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 18 2 12 8 6"></polyline>
-                </svg>
-                <h1 class="text-2xl font-bold text-white">Codify</h1>
-            </div>
-            <div class="flex gap-6">
-                <a href="#features" class="text-slate-300 hover:text-indigo-400">Features</a>
-                <a href="#about" class="text-slate-300 hover:text-indigo-400">About</a>
-                <a href="#contact" class="text-slate-300 hover:text-indigo-400">Contact</a>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-brand">
+                    <svg class="navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 18 2 12 8 6"></polyline>
+                    </svg>
+                    <h1 class="navbar-title">Codify</h1>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Navigation Links -->
+                <div class="navbar-menu" id="navMenu">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <section class="container flex flex-col items-center justify-center min-h-screen text-center py-20">
-            <h1 class="text-5xl font-bold text-white mb-6 leading-tight">
-                Learn to Code <span class="text-indigo-400">Smarter</span>
-            </h1>
-            <p class="text-xl text-slate-300 mb-8 max-w-2xl">
-                Master programming with interactive lessons, real-world projects, and a supportive community. Start your coding journey today.
-            </p>
-            <div class="flex gap-4">
-                <button class="btn btn-primary" onclick="handleGetStarted()">Get Started Free</button>
-                <button class="btn btn-secondary">Learn More</button>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Learn to Code <span class="highlight">Smarter</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Master programming with interactive lessons, real-world projects, and a supportive community. Start your coding journey today.
+                </p>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="handleGetStarted()">Get Started Free</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="container py-20">
-            <h2 class="text-4xl font-bold text-white text-center mb-16">Why Choose Codify?</h2>
-            <div class="grid grid-cols-2 gap-8">
-                <div class="feature-card card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <h3 class="text-xl font-bold text-white">Interactive Learning</h3>
+        <section id="features" class="features-section">
+            <div class="section-container">
+                <h2 class="section-title">Why Choose Codify?</h2>
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Interactive Learning</h3>
+                        <p>Learn by doing with hands-on coding challenges and instant feedback.</p>
                     </div>
-                    <p class="text-slate-300">Learn by doing with hands-on coding challenges and instant feedback.</p>
-                </div>
 
-                <div class="feature-card card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <h3 class="text-xl font-bold text-white">Expert Instructors</h3>
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h3>Expert Instructors</h3>
+                        <p>Learn from industry professionals with years of coding experience.</p>
                     </div>
-                    <p class="text-slate-300">Learn from industry professionals with years of coding experience.</p>
-                </div>
 
-                <div class="feature-card card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <h3 class="text-xl font-bold text-white">24/7 Support</h3>
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Get help whenever you need it from our dedicated support team.</p>
                     </div>
-                    <p class="text-slate-300">Get help whenever you need it from our dedicated support team.</p>
-                </div>
 
-                <div class="feature-card card">
-                    <div class="flex items-center gap-4 mb-4">
-                        <svg class="w-8 h-8 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v20M2 12h20"></path>
-                        </svg>
-                        <h3 class="text-xl font-bold text-white">Multiple Languages</h3>
+                    <!-- Feature 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 12h20"></path>
+                            </svg>
+                        </div>
+                        <h3>Multiple Languages</h3>
+                        <p>Master JavaScript, Python, TypeScript, and more programming languages.</p>
                     </div>
-                    <p class="text-slate-300">Master JavaScript, Python, TypeScript, and more programming languages.</p>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="container py-20">
-            <div class="about card bg-indigo-900 bg-opacity-20 border-indigo-500 border-opacity-30">
-                <h2 class="text-3xl font-bold text-white mb-4">About Codify</h2>
-                <p class="text-slate-300 text-lg leading-relaxed mb-4">
-                    Codify is a modern platform dedicated to making programming education accessible to everyone. With a focus on practical skills and real-world applications, we help learners of all levels achieve their coding goals.
-                </p>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Our mission is to empower the next generation of developers by providing high-quality, affordable coding education that prepares them for success in the tech industry.
-                </p>
+        <section id="about" class="about-section">
+            <div class="section-container">
+                <div class="about-card">
+                    <h2 class="section-title">About Codify</h2>
+                    <p class="about-text">
+                        Codify is a modern platform dedicated to making programming education accessible to everyone. With a focus on practical skills and real-world applications, we help learners of all levels build the foundation they need to succeed.
+                    </p>
+                    <p class="about-text">
+                        Our mission is to empower the next generation of developers by providing high-quality, affordable coding education that prepares them for success in the tech industry.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="container py-20">
-            <h2 class="text-4xl font-bold text-white text-center mb-16">Get In Touch</h2>
-            <div class="max-w-2xl mx-auto">
-                <form class="contact card" onsubmit="handleContact(event)">
-                    <div class="mb-6">
-                        <label class="block text-slate-300 mb-2">Email</label>
-                        <input type="email" placeholder="your@email.com" required class="w-full">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-slate-300 mb-2">Message</label>
-                        <textarea placeholder="Tell us what you think..." rows="5" required class="w-full"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-full">Send Message</button>
-                </form>
+        <section id="contact" class="contact-section">
+            <div class="section-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-wrapper">
+                    <form class="contact-form" onsubmit="handleContact(event)">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" placeholder="Tell us what you think..." rows="5" required class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="bg-slate-900 text-center py-8 border-t border-slate-800 mt-20">
-            <p class="text-slate-400">&copy; 2024 Codify. All rights reserved. | <a href="#" class="text-indigo-400 hover:text-indigo-300">Privacy Policy</a></p>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Codify. All rights reserved. | <a href="#" class="footer-link">Privacy Policy</a></p>
+            </div>
         </footer>
     </div>
 
